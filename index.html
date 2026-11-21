@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>ALALAY – Inventory System</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside>
+      <div class="logo">ALALAY</div>
+      <nav aria-label="Main">
+        <a href="#dashboard" data-v="dashboard">Dashboard</a>
+        <a href="#products" data-v="products">Product Management</a>
+        <a href="#sales" data-v="sales">Sales & transactions</a>
+        <a href="#suppliers" data-v="suppliers">Supplier management</a>
+      </nav>
+    </aside>
+    <main>
+      <header>
+        <div>
+          <h1 id="ht"></h1>
+          <p id="hs"></p>
+        </div>
+        <div class="hr">
+          <button class="s" type="button" id="gs">Search</button>
+          <div class="av">US</div>
+        </div>
+      </header>
+      <div class="pg" id="pg"></div>
+    </main>
+    <dialog id="dlg">
+      <h3 id="dt"></h3>
+      <div id="df"></div>
+      <div class="row">
+        <button
+          class="btn g"
+          style="font-size: 15px; padding: 10px 22px"
+          id="dc"
+          type="button"
+        >
+          Cancel</button
+        ><button class="btn" id="ds" type="button">Save</button>
+      </div>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>

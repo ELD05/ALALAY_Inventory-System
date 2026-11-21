@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>ALALAY – Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="login-screen">
+      <div class="login-container">
+        <div class="login-header">
+          <div class="logo-text">ALALAY</div>
+          <div class="logo-text-sub">Inventory System</div>
+        </div>
+        <form id="login-form">
+          <div class="login-field">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              autocomplete="username"
+              placeholder="Enter your username"
+            />
+          </div>
+          <div class="login-field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              autocomplete="current-password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <div class="login-actions">
+            <button type="submit" class="btn">Sign In</button>
+          </div>
+        </form>
+        <p class="login-footer">© 2026 ALALAY Inventory System</p>
+      </div>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>
