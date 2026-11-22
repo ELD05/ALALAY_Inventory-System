@@ -1,16 +1,16 @@
-// Authentication check - redirect to login if not authenticated
-(function() {
-  var loggedIn = localStorage.getItem('alalay_loggedIn') === 'true';
-  var currentUser = localStorage.getItem('alalay_user') || null;
+var currentUser = localStorage.getItem("alalay_user") || null;
+(function () {
+  var loggedIn = localStorage.getItem("alalay_loggedIn") === "true";
 
   if (!loggedIn) {
-    window.location.href = 'login.html';
+    window.location.href = "login.html";
     return;
   }
 
   // Set user greeting
-  document.addEventListener('DOMContentLoaded', function() {
-    $('ht').textContent = 'Magandang umaga, ' + currentUser;
+  document.addEventListener("DOMContentLoaded", function () {
+    var currentUser = localStorage.getItem("alalay_user") || "User";
+    $("ht").textContent = "Magandang umaga, " + currentUser;
     render();
   });
 })();
@@ -461,7 +461,7 @@ function render() {
   document.querySelectorAll("nav a").forEach(function (a) {
     a.classList.toggle("on", a.dataset.v === v);
   });
-  $("ht").textContent = v === "dashboard" ? "Magandang umaga, User" : V[v][0];
+  $("ht").textContent = "Magandang umaga, " + (currentUser || "User");
   $("hs").textContent = V[v][1];
   document.title = "ALALAY – " + V[v][0];
   $("pg").innerHTML = {
@@ -475,7 +475,7 @@ function render() {
     document.querySelectorAll("nav a").forEach(function (a) {
       a.classList.toggle("on", a.dataset.v === v);
     });
-    $("ht").textContent = "Magandang umaga, " + currentUser;
+    $("ht").textContent = "Magandang umaga, " + (currentUser || "User");
     $("hs").textContent = "Here's what's happening with our system today.";
     document.title = "ALALAY – Dashboard";
   }

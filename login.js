@@ -1,42 +1,55 @@
-// Login state
-var loggedIn = false;
-var currentUser = null;
+// Login page: sends credentials to the backend instead of checking them in the browser.
+var API_URL = "http://localhost:3000/api/login";
 
-// Initialize login screen and auth check
-document.addEventListener('DOMContentLoaded', function() {
-  var loginScreen = document.getElementById('login-screen');
-  var loginForm = document.getElementById('login-form');
+document.addEventListener("DOMContentLoaded", function () {
+  var loginForm = document.getElementById("login-form");
+  var submitBtn = loginForm.querySelector('button[type="submit"]');
+  var passwordInput = document.getElementById("password");
 
-  // Default credentials for demo
-  var validUsers = {
-    'admin': 'admin123',
-    'user': 'user123'
-  };
-
-  // Handle login form submission
-  loginForm.addEventListener('submit', function(e) {
+  loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
 
-    if (validUsers[username] && validUsers[username] === password) {
-      loggedIn = true;
-      currentUser = username;
-      // Store session in localStorage
-      localStorage.setItem('alalay_loggedIn', 'true');
-      localStorage.setItem('alalay_user', username);
-      // Redirect to main app
-      window.location.href = 'index.html';
-    } else {
-      alert('Invalid username or password. Please try again.');
-      document.getElementById('password').value = '';
-    }
+    var username = document.getElementById("username").value.trim();
+    var password = passwordInput.value;
+
+    submitBtn.disabled = true;
+
+    fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: username, password: password }),
+    })
+      .then(function (res) {
+        return res
+          .json()
+          .catch(function () {
+            return {};
+          })
+          .then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+      })
+      .then(function (result) {
+        if (result.ok && result.data.success) {
+          // Keep the same localStorage keys that app.js expects
+          localStorage.setItem("alalay_loggedIn", "true");
+          localStorage.setItem("alalay_user", result.data.user.username);
+          window.location.href = "index.html";
+        } else {
+          showError(result.data.message || "Login failed. Please try again.");
+        }
+      })
+      .catch(function () {
+        showError(
+          "Cannot reach the server. Make sure the backend is running at http://localhost:3000.",
+        );
+      });
   });
 
-  // Allow Enter key to submit
-  document.getElementById('password').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      loginForm.dispatchEvent(new Event('submit'));
-    }
-  });
+  function showError(message) {
+    alert(message);
+    passwordInput.value = "";
+    passwordInput.focus();
+    submitBtn.disabled = false;
+  }
 });
