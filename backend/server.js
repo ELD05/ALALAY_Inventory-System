@@ -11,7 +11,6 @@ const USERS_FILE = path.join(__dirname, "users.json");
 app.use(cors());
 app.use(express.json());
 
-// Read on every login so edits to users.json apply without restarting.
 function loadUsers() {
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf8"));
 }

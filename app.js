@@ -7,7 +7,6 @@ var currentUser = localStorage.getItem("alalay_user") || null;
     return;
   }
 
-  // Set user greeting
   document.addEventListener("DOMContentLoaded", function () {
     var currentUser = localStorage.getItem("alalay_user") || "User";
     $("ht").textContent = "Magandang umaga, " + currentUser;
@@ -471,7 +470,6 @@ function render() {
     suppliers: sups,
   }[v]();
   if (v === "dashboard") {
-    // Show dashboard-specific content
     document.querySelectorAll("nav a").forEach(function (a) {
       a.classList.toggle("on", a.dataset.v === v);
     });

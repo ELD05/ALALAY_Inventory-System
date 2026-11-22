@@ -1,4 +1,3 @@
-// Login page: sends credentials to the backend instead of checking them in the browser.
 var API_URL = "http://localhost:3000/api/login";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -31,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(function (result) {
         if (result.ok && result.data.success) {
-          // Keep the same localStorage keys that app.js expects
           localStorage.setItem("alalay_loggedIn", "true");
           localStorage.setItem("alalay_user", result.data.user.username);
           window.location.href = "index.html";
