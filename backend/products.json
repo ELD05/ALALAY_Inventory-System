@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "AirWave Pro Headphones",
+    "category": "Audio",
+    "price": 249,
+    "quantity": 38
+  },
+  {
+    "id": 2,
+    "name": "Vertex Smartphone X",
+    "category": "Mobile",
+    "price": 799,
+    "quantity": 16
+  },
+  {
+    "id": 3,
+    "name": "Studio Wireless Headset",
+    "category": "Audio",
+    "price": 189,
+    "quantity": 8
+  },
+  {
+    "id": 4,
+    "name": "Pocket Buds 2",
+    "category": "Accessories",
+    "price": 129,
+    "quantity": 5
+  },
+  {
+    "id": 5,
+    "name": "Ergo Mechanical Keyboard",
+    "category": "Accessories",
+    "price": 159,
+    "quantity": 24
+  },
+  {
+    "id": 6,
+    "name": "UltraView 27 Display",
+    "category": "Displays",
+    "price": 429,
+    "quantity": 0
+  }
+]
